@@ -8,32 +8,32 @@ This is a keyboard firmware based on the [tmk_keyboard firmware](http://github.c
 
 For an easy-to-read version of this document and the repository, check out [http://qmk.fm](http://qmk.fm). Nicely formatted keyboard and keymap listings are also available there, along with the ability to download .hex files instead of having to setup a build environment and compile them.
 
-## Included Keyboards
+## NDLR: 
+I removed all keyboards apart from the dactyl-manuform which is the one I used
 
-* [Planck](/keyboards/planck/)
-* [Preonic](/keyboards/preonic/)
-* [Atomic](/keyboards/atomic/)
-* [ErgoDox EZ](/keyboards/ergodox/)
-* [Clueboard](/keyboards/clueboard/)
-* [Cluepad](/keyboards/cluepad/)
+## Hardware 
 
-The project also includes community support for [lots of other keyboards](/keyboards/).
+I used cosmos to generate the stl promicro holders
+Wiring is based on https://github.com/abstracthat/dactyl-manuform 
 
-## Maintainers
+![Left Wire Diagram](imgs/dactyl_manuform_left_wire_diagram.png)
+![Right Wire Diagram](imgs/dactyl_manuform_right_wire_diagram.png)
 
-QMK is developed and maintained by Jack Humbert of OLKB with contributions from the community, and of course, [Hasu](https://github.com/tmk). This repo used to be a fork of [TMK](https://github.com/tmk/tmk_keyboard), and we are incredibly grateful for his founding contributions to the firmware. We've had to break the fork due to purely technical reasons - it simply became too different over time, and we've had to start refactoring some of the basic bits and pieces. We are huge fans of TMK and Hasu :)
+I used copper stripes for columns, diodes legs for the rows, TRS connectors between each side using serial (no I2C)
 
-This documentation is edited and maintained by Erez Zukerman of ErgoDox EZ. If you spot any typos or inaccuracies, please [open an issue](https://github.com/qmk/qmk_firmware/issues/new).
+Printed on a Bambulab X1 Carbon, nice print but the switches could benefit from a tighter fit 
 
-The OLKB product firmwares are maintained by [Jack Humbert](https://github.com/jackhumbert), the Ergodox EZ by [Erez Zukerman](https://github.com/ezuk), and the Clueboard by [Zach White](https://github.com/skullydazed).
+## Software
 
-## Documentation roadmap
+For this new build I first tried to make it work using the upstream QMK without success 
+(this may be caused by incorrect pins, which I had to change here as well)
 
-This is not a tiny project. While this is the main readme, there are many other files you might want to consult. Here are some points of interest:
+I then fell back to this fork https://github.com/tshort/qmk_firmware as I knew it worked thanks to my previous build
 
-* [**The Wiki**](https://github.com/qmk/qmk_firmware/wiki) - the entirety of the readme has been moved here
-* The readme for your own keyboard: This is found under `keyboards/<your keyboards's name>/`. So for the ErgoDox EZ, it's [here](keyboards/ergodox/ez/); for the Planck, it's [here](keyboards/planck/) and so on.
-* The list of possible keycodes you can use in your keymap is actually spread out in a few different places:
-  * [doc/keycode.txt](doc/keycode.txt) - an explanation of those same keycodes.
-  * [quantum/quantum_keycodes.h](quantum/quantum_keycodes.h) - this is where the QMK-specific aliases are all set up. Things like the Hyper and Meh key, the Leader key, and all of the other QMK innovations. These are also explained and documented below, but `quantum_keycodes.h` is where they're actually defined.
-* The [TMK documentation](doc/TMK_README.md). QMK is based on TMK, and this explains how it works internally.
+## TODO:
+- Nkro does not work, even if enabled in rules.mk
+    As suggested in the comment: # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+
+- use upstream QMK and set the proper pins (like in this config.h) to make it work? 
+
+- volume up / down / mute does not work
