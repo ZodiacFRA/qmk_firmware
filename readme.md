@@ -19,10 +19,12 @@ I removed all keyboards apart from the dactyl-manuform which is the one I used
 
 ## Software
 
-For this new build I first tried to make it work using the upstream QMK without success 
+- For this new build I first tried to make it work using the upstream QMK without success 
 (this may be caused by incorrect pins, which I had to change here as well)
 
-I then fell back to this fork https://github.com/tshort/qmk_firmware as I knew it worked thanks to my previous build
+- I then fell back to this fork https://github.com/tshort/qmk_firmware as I knew it worked thanks to my previous build
+
+- keycodes list: https://docs.qmk.fm/keycodes_basic
 
 ## TODO:
 - Nkro does not work, even if enabled in rules.mk
